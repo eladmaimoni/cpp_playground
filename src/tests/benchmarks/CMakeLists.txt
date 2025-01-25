@@ -1,22 +1,26 @@
 set_source_group(
     run
-    unit_tests_main.cpp
+    benchmarks_main.cpp
 )
 set_source_group(
     tests
-    core_tests.cpp
-    binary_search_tests.cpp
+    binary_search_benchmarks.cpp
+)
+set_source_group(
+    nanobench
+    nanobench.cpp
+    nanobench.h
 )
 add_executable(
-    unit_tests
+    benchmarks
     ${run}
     ${tests}
+    ${nanobench}
 )
 
 target_compile_definitions(
-    unit_tests
+    benchmarks
     PRIVATE
-    CATCH_CONFIG_ENABLE_BENCHMARKING
 )
 
 target_link_libraries(
@@ -27,4 +31,4 @@ target_link_libraries(
     Catch2::Catch2
 )
 
-set_target_properties(unit_tests PROPERTIES FOLDER tests)
+set_target_properties(benchmarks PROPERTIES FOLDER tests)
